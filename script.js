@@ -11,7 +11,14 @@ if (tparam !== null) {
 }
 
 console.log(track);
-const map = L.map('map').setView([42.573, 8.74], 15);
+
+//var map_center_lon = 8.74;
+//var map_center_lat = 42.573;
+
+var map_center_lon = track[track.length-1][0];
+var map_center_lat = track[track.length-1][1];
+
+const map = L.map('map').setView([map_center_lat, map_center_lon], 15);
 
 const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -29,7 +36,7 @@ if (track.length > 0) {
                     "coordinates": track,
                 },
                 "properties": {
-                    "popupContent": "drifter03",
+                    "popupContent": "drifter",
                 },
                 "id": 3
             },
